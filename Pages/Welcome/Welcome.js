@@ -13,19 +13,28 @@ class Welcome extends React.Component{
 			message1:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae est cupiditate sequi ex dolore voluptas, quidem.',
 			message2:'delectus optio ipsa aperiam ipsum suscipit quia vitae ullam ipsam velit iste, soluta et ',
 			message3:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, hic nemo aliquam error, quo commodi delectus eum ',
-			color:'red',
+			color:['white','white','white'],
 			display:'none'
 		}
 	}
-    setTexte(value,display){
+    setTexte(value,display,color){
     	this.setState({message:value})
-    	this.setState({color:value})
-        this.setState({display:display})
+        switch(color){
+        	case 'blue1':
+        	return this.setState({color:['blue','white','white']});
+        	break;        	
+        	case 'blue2':
+        	return this.setState({color:['white','blue','white']});
+        	break;        	
+        	case 'blue3':
+        	return this.setState({color:['white','white','blue']});
+        	break;
+        }
     }
     componentDidMount(){
-       x=setTimeout(()=>this.setTexte(this.state.message1,'none'),4000)
-       x=setTimeout(()=>this.setTexte(this.state.message2,'none'),10000)
-       x=setTimeout(()=>this.setTexte(this.state.message3,'block'),15000)
+       x=setTimeout(()=>this.setTexte(this.state.message1,'none','blue1'),4000)
+       x=setTimeout(()=>this.setTexte(this.state.message2,'none','blue2'),10000)
+       x=setTimeout(()=>this.setTexte(this.state.message3,'block','blue3'),15000)
     }
     componentWillMount(){
     	clearTimeout(x)
@@ -42,15 +51,15 @@ class Welcome extends React.Component{
                	  <Text style={styles.text}>{this.state.message}</Text>
                	  <View style={styles.bules}>
                	  	<View 
-               	  	style={{borderWidth:1,borderRadius:20,width:10,height:10,position:'relative'}}
+               	  	style={{borderWidth:1,borderRadius:20,width:10,height:10,position:'relative',backgroundColor:this.state.color[0]}}
                	  	>
                	  	</View>               	  	
                	  	<View 
-               	  	style={{borderWidth:1,borderRadius:20,width:10,height:10,position:'relative'}}
+               	  	style={{borderWidth:1,borderRadius:20,width:10,height:10,position:'relative',backgroundColor:this.state.color[1]}}
                	  	>
                	  	</View>               	  	
                	  	<View 
-               	  	style={{borderWidth:1,borderRadius:20,width:10,height:10,position:'relative'}}
+               	  	style={{borderWidth:1,borderRadius:20,width:10,height:10,position:'relative',backgroundColor:this.state.color[2]}}
                	  	>
                	  	</View>
                	  </View>
