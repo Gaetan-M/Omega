@@ -29,5 +29,8 @@ export const styles=StyleSheet.create({
       width:100,
       height:100,
       resizeMode:'cover'
+    },
+    button:{
+      width:20
     }
 })

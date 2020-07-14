@@ -1,6 +1,7 @@
 import React from 'react';
 import {View,Text} from 'react-native';
 import {styles} from './style.js'
+import Navbar from '../../Components/Navbar/Navbar.js'
 /*
 ********Components qui affiche toutes les discussion en cour**
 -initialisation du component
@@ -18,6 +19,7 @@ export default class ListDiscussion extends React.Component{
     render(){
     	return(
     		<View style={styles.container}>
+                <Navbar />
     			<Text>page qui va contenir la liste des discussions</Text>
     		</View>
         )

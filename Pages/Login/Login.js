@@ -3,18 +3,23 @@ import Carousel from 'react-native-anchor-carousel';
 import {Switch,ScrollView,Image,PixelRatio,Dimensions,View,Button,Text,TextInput,StyleSheet} from 'react-native';
 import {widthPercentageToDP as wp,heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {styles} from './Style.js'
-
-
+import AppNavigator from '../../Navigation/AppNavigator'
 
 class Login extends React.Component{
   
   constructor(){
       super();
       this.state={
-        isEnabled:false
+        isEnabled:false,
+        display:'block'
       }
   }
-  
+  execute(){
+    console.log('hello')
+    return(
+      <AppNavigator />
+    )
+  }
   displayHearder(){
    return(
       <View style={styles.header}>
@@ -64,6 +69,11 @@ class Login extends React.Component{
         trackColor={{ false: "#767577", true: "#81b0ff" }}
         onValueChange={(value)=>this.setState({isEnabled:value})}
         value={this.state.isEnabled}
+         />
+         <Button
+         style={styles.button}
+         title="hello"
+         onPress={()=>this.execute()}
          />
       </ScrollView>    
     )
