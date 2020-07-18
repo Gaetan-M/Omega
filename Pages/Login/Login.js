@@ -1,56 +1,55 @@
 import React from 'react';
 import Carousel from 'react-native-anchor-carousel';
-import {Switch,ScrollView,Image,PixelRatio,Dimensions,View,Button,Text,TextInput,StyleSheet} from 'react-native';
+import {TouchableOpacity,Switch,ScrollView,Image,PixelRatio,Dimensions,View,Button,Text,TextInput,StyleSheet} from 'react-native';
 import {widthPercentageToDP as wp,heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {styles} from './Style.js'
 import AppNavigator from '../../Navigation/AppNavigator'
 
+const {width,height}=Dimensions.get('screen')
 class Login extends React.Component{
   
   constructor(){
       super();
       this.state={
         isEnabled:false,
-        display:'block'
+        display:'flex',
+        text:'Bienvenu dans l appli veuillez vous inscrire maintenant'
       }
   }
   execute(){
-    console.log('hello')
-    return(
-      <AppNavigator />
-    )
+    this.props.navigation.navigate('Main')
   }
   displayHearder(){
    return(
       <View style={styles.header}>
-        <View style={styles.logoBox}>
-           <View style={styles.Logo}></View>
-           <Text>Omega</Text>
-        </View>     
+            <Image style={styles.img}
+                      source={require('../../assets/logo.png')}
+            /> 
+            <Text style={{width:200,textAlign:'center',marginLeft:width/4}}>{this.state.text}</Text> 
       </View> 
     )
   }
   displayForm(){
     return(
       <View style={styles.form}>
-        <View style={styles.input}> 
-          <Text>Email</Text>         
-          <TextInput></TextInput>
-          <View style={styles.logoEmail}></View>
+        <View style={styles.inputView}>         
+          <TextInput style={styles.input}></TextInput>
+            <Image style={styles.logo}
+                      source={require('../../assets/email.png')}
+            />
         </View>        
-        <View style={styles.input}> 
-          <Text>User</Text>         
-          <TextInput></TextInput>
-          <View style={styles.logoUser}></View>
+        <View style={styles.inputView}>         
+          <TextInput style={styles.input}></TextInput>
+            <Image style={styles.logo}
+                      source={require('../../assets/user.png')}
+            />          
         </View>        
-        <View style={styles.input}>
-          <Text>phone</Text> 
-          <TextInput></TextInput>
-          <View style={styles.logoPhone}></View>
+        <View style={styles.inputView}>
+          <TextInput style={styles.input}></TextInput>
+            <Image style={styles.logo}
+                      source={require('../../assets/phone.png')}
+            />          
         </View>        
-        <View style={styles.button}>
-          <Text>SIGN UP</Text> 
-        </View>
       </View> 
     )
   }
@@ -60,21 +59,27 @@ class Login extends React.Component{
       <ScrollView style={styles.container}>
         {this.displayHearder()}
         {this.displayForm()}
-        <View><Text>ImageBackground</Text>
-          <Image style={styles.img}
-            source={require('../../assets/20860.jpg')}
-          />
-        </View>
-        <Switch
+{/*        <Switch
         trackColor={{ false: "#767577", true: "#81b0ff" }}
         onValueChange={(value)=>this.setState({isEnabled:value})}
         value={this.state.isEnabled}
-         />
-         <Button
-         style={styles.button}
-         title="hello"
-         onPress={()=>this.execute()}
-         />
+         />*/}
+          <TouchableOpacity
+                      style={{
+                    marginTop:50,
+                    borderWidth:1,
+                    width:200,
+                    backgroundColor:'lightblue',
+                    borderRadius:20,
+                    paddingTop:5,
+                    marginLeft:width/4,
+                    height:40,
+                    display:this.state.display
+                      }}
+                            onPress={()=>this.execute()}
+                         >
+                      <Text style={{textAlign:'center',color:'white'}}>Sign Up</Text>     
+          </TouchableOpacity>
       </ScrollView>    
     )
   }

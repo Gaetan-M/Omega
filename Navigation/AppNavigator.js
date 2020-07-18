@@ -3,19 +3,29 @@ import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack'
 import BottomTabNavigator from './BottomTabNavigator';
 import LoginNavigator from '../Pages/Login/Login'
-
-
-export default createAppContainer(
-  createSwitchNavigator({
-
-    Main: BottomTabNavigator,
-    Login: LoginNavigator
-  })
-);
+import WelcomeScreen from '../Pages/Welcome/Welcome'
 
 // export default createAppContainer(
-// 	createStackNavigator({
-// 		Main:{
-// 			screen:BottomTabNavigator,
-// 		}
-// 	})) 
+//   createSwitchNavigator({
+
+//     Main: BottomTabNavigator,
+//     Login: LoginNavigator
+//   })
+// );
+
+export default createAppContainer(
+	createStackNavigator({
+		Main:{
+			screen:BottomTabNavigator
+		},
+		Welcome:{
+			screen:WelcomeScreen
+		},
+		Login:{
+			screen:LoginNavigator			
+		}
+	}, 
+       {
+       	initialRouteName:'Welcome',
+       	headerMode:'none'}
+	)) 

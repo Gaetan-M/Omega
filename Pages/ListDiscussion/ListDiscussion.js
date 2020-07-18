@@ -15,7 +15,7 @@ export default class ListDiscussion extends React.Component{
 	  super();
     }
 
-
+     
     render(){
     	return(
     		<View style={styles.container}>
